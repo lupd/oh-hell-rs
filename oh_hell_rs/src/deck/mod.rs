@@ -36,16 +36,16 @@ pub struct Card {
 }
 
 impl Card {
-    /// Get a reference to the card's rank.
+    /// Get the card's rank.
     #[must_use]
-    pub const fn rank(&self) -> &Rank {
-        &self.rank
+    pub const fn rank(&self) -> Rank {
+        self.rank
     }
 
-    /// Get a reference to the card's suit.
+    /// Get the card's suit.
     #[must_use]
-    pub const fn suit(&self) -> &Suit {
-        &self.suit
+    pub const fn suit(&self) -> Suit {
+        self.suit
     }
 }
 
