@@ -1,23 +1,9 @@
-on: [push, pull_request]
+on: [pull_request]
 
 name: Continuous integration
 
 jobs:
-  check:
-    name: Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: check
-
-  check:
+  build_linux:
     name: Linux Build
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +17,7 @@ jobs:
         with:
           command: build
 
-  check:
+  build_windows:
     name: Windows Build
     runs-on: windows-latest
     steps:
@@ -45,8 +31,8 @@ jobs:
         with:
           command: build
 
-  check:
-    name: Check
+  build_mac:
+    name: Mac OS Build
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -59,7 +45,7 @@ jobs:
         with:
           command: build
 
-  test:
+  test_linux:
     name: Test Suite (Linux)
     runs-on: ubuntu-latest
     steps:
@@ -73,7 +59,7 @@ jobs:
         with:
           command: test
 
-  test:
+  test_windows:
     name: Test Suite (Windows)
     runs-on: windows-latest
     steps:
@@ -87,7 +73,7 @@ jobs:
         with:
           command: test
 
-  test:
+  test_mac:
     name: Test Suite (Mac OS)
     runs-on: macos-latest
     steps:
@@ -143,11 +129,11 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - run: rustup component add clippy
+      - run: rustup component add rust-docs
       - uses: actions-rs/cargo@v1
         with:
           command: doc
-          args: -- -D warnings
+          args: --verbose --document-private-items
 
   audit:
     name: Audit
