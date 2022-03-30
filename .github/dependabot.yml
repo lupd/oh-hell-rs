@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: cargo
+    directory: "/oh_hell_rs"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: "daily"

@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "oh_hell_rs"
+]
+
+[profile.release]
+lto = "fat"
+
+[profile.bench]
+lto = "fat"
