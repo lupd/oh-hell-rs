@@ -34,6 +34,9 @@ pub struct Card {
 }
 
 impl Card {
+    pub const fn from_rank_and_suit(rank: Rank, suit: Suit) -> Card {
+        Card { rank, suit }
+    }
     /// Get the card's rank.
     #[must_use]
     pub const fn rank(&self) -> Rank {
